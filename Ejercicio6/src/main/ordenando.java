@@ -5,12 +5,14 @@ import java.util.ArrayList;
 public class ordenando {
 
 	private ArrayList<String> formaOrdenar;
+	private String resultado;
 
 	public ordenando() {
+		formaOrdenar = new ArrayList<>();
 	}
 
-	public void orden(String condicion, int caso) {
-		formaOrdenar = new ArrayList<>();
+	public String orden(String condicion) {
+		resultado= "";
 		ArrayList<String> arSTR = new ArrayList<>();
 		String[] letra_letra = condicion.split("");
 		for (int i = 0; i < letra_letra.length; i++) {
@@ -40,36 +42,18 @@ public class ordenando {
 					}
 				}
 			}
-
-			if (caso == 1) {
-				for (int i = 0; i < formaOrdenar.size(); i++) {
-					for (int j = 0; j < formaOrdenar.size(); j++) {
-						if (formaOrdenar.get(i).equals(formaOrdenar.get(j)) && i != j) {
-							formaOrdenar.remove(j);
-						}
-					}
-				}
-				formaOrdenar.add("G");
-			}
-			if (caso != 3 && caso != 1) {
-				for (int i = 0; i < formaOrdenar.size(); i++) {
-					for (int j = 0; j < formaOrdenar.size(); j++) {
-						if (formaOrdenar.get(i).equals(formaOrdenar.get(j)) && i != j) {
-							formaOrdenar.remove(j);
-						}
+			for (int i = 0; i < formaOrdenar.size(); i++) {
+				for (int j = 0; j < formaOrdenar.size(); j++) {
+					if (formaOrdenar.get(i).equals(formaOrdenar.get(j)) && i != j) {
+						formaOrdenar.remove(j);
 					}
 				}
 			}
 		}
-		System.out.println(formaOrdenar.toString());
-	}
-
-	public String resultado() {
-		String ordenado = "";
 		for (String aux : formaOrdenar) {
-			ordenado += aux + " ";
+			resultado += aux;
 		}
-		return ordenado;
+		return resultado;
 	}
 
 	public ArrayList<String> getFormaOrdenar() {
@@ -80,4 +64,11 @@ public class ordenando {
 		this.formaOrdenar = formaOrdenar;
 	}
 
+	public String getResultado() {
+		return resultado;
+	}
+
+	public void setResultado(String resultado) {
+		this.resultado = resultado;
+	}
 }
